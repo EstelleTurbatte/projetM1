@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MonDossierMedical</string>
     <string name="whoAreYou">Qui êtes-vous ?</string>
+    <string name="nomDocteurInput">Nom</string>
+    <string name="prenomDoctorInput">Prénom</string>
+    <string name="nomDocteurLogin">Identifiant</string>
+    <string name="passwordDoctorInput">Mot de Passe</string>
+    <string name="validerDoctorButton">Valider</string>
 </resources>

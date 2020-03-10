@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgrounddoctor3"
+    tools:context=".LoginDoctorActivity">
+
+    <Button
+        android:id="@+id/validerDoctorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/validerDoctorButton"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputEditText"
+        app:layout_constraintStart_toStartOf="@+id/textInputEditText"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/loginDocteurInput"
+        android:layout_width="236dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="148dp"
+        android:hint="@string/nomDocteurLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditText"
+        android:layout_width="238dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/passwordDoctorInput"
+        app:layout_constraintEnd_toEndOf="@+id/loginDocteurInput"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginDocteurInput"
+        app:layout_constraintTop_toBottomOf="@+id/loginDocteurInput" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
