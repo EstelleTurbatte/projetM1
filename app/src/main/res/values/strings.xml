@@ -55,6 +55,9 @@
     <string name="DATE">DATE</string>
     <string name="PRESCRIPTION">PRESCRIPTION</string>
     <string name="ENVOYER">ENVOYER</string>
+    <string name="newCR">NOUVEAU COMPTE RENDU</string>
+    <string name="COMPTERENDU">COMPTE RENDU</string>
+    <string name="infoDoc">INFOS MEDECIN</string>
 
 
 </resources>
