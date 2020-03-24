@@ -6,4 +6,55 @@
     <string name="nomDocteurLogin">Identifiant</string>
     <string name="passwordDoctorInput">Mot de Passe</string>
     <string name="validerDoctorButton">Valider</string>
+    <string name="monCompteTextView">Mon Compte</string>
+    <string name="nomDoctor">NOM</string>
+    <string name="prenomDoctor">PRENOM</string>
+    <string name="emailDoctorTextView">E-MAIL</string>
+    <string name="numeroRPPSTextView">n° RPPS</string>
+    <string name="modifierButton2">MODIFIER</string>
+    <string name="empty" />
+    <string name="codes">VOS CODES D\'IDENTIFICATION</string>
+    <string name="loginDoctorInput">IDENTIFIANT</string>
+    <string name="passwordDocteurrInput">MOT DE PASSE</string>
+    <string name="newCount">Vous n\'avez pas encore de compte ? Cliquez ici.</string>
+    <string name="title_activity_doctor_count">DoctorCountActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="consultationTitre">CONSULTATION</string>
+    <string name="monPatient">Mon Patient</string>
+    <string name="ordonnanceButton">ORDONNANCE</string>
+    <string name="CRButton">COMPTE-RENDUS</string>
+    <string name="examensButton">EXAMENS</string>
+    <string name="monCompteButton">MON COMPTE</string>
+    <string name="ordonnanceTitle">ORDONNANCES DU PATIENT</string>
+    <string name="newOrdonnance">NOUVELLE ORDONNANCE</string>
+    <string name="dateView">25/12/2020</string>
+    <string name="motifTextView">motif</string>
+    <string name="logo">logo de l\'application</string>
+    <string name="medecin">logo médecin</string>
+    <string name="logoPatient">logo Patient</string>
+    <string name="crTextView">COMPTE RENDUS PATIENTS</string>
+    <string name="newCRButton">NOUVEAU COMPTE RENDU</string>
+    <string name="examentTexView">EXAMENS PATIENTS</string>
+    <string name="typeExamen">type</string>
+    <string name="monCompte">MON COMPTE</string>
+    <string name="modifierButton">MODIFIER</string>
+    <string name="newOrdonnanceTitle">NOUVELLE ORDONNANCE</string>
+    <string name="motif">MOTIF</string>
+    <string name="DATE">DATE</string>
+    <string name="PRESCRIPTION">PRESCRIPTION</string>
+    <string name="ENVOYER">ENVOYER</string>
+
+
 </resources>

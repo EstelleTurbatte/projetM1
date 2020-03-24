@@ -15,9 +15,9 @@
         android:text="@string/validerDoctorButton"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textInputEditText"
-        app:layout_constraintStart_toStartOf="@+id/textInputEditText"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordDoctorInput"
+        app:layout_constraintStart_toStartOf="@+id/passwordDoctorInput"
+        app:layout_constraintTop_toBottomOf="@+id/passwordDoctorInput" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/loginDocteurInput"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/passwordDoctorInput"
         android:layout_width="238dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
@@ -40,5 +40,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loginDocteurInput"
         app:layout_constraintTop_toBottomOf="@+id/loginDocteurInput" />
+
+    <TextView
+        android:id="@+id/newCountText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/newCount"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_primary"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/validerDoctorButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

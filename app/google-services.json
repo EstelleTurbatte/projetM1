@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "275647544321",
+    "firebase_url": "https://mon-dossier-medical-a07bb.firebaseio.com",
+    "project_id": "mon-dossier-medical-a07bb",
+    "storage_bucket": "mon-dossier-medical-a07bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275647544321:android:215011fd7c33e90ebcd400",
+        "android_client_info": {
+          "package_name": "fr.isen.turbatte.mondossiermedical"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275647544321-k4tj8av5og38hgglrtru1dctub2i2cgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.isen.turbatte.mondossiermedical",
+            "certificate_hash": "cb5b55d3dbd800d78693f1ea31409ff630865b5b"
+          }
+        },
+        {
+          "client_id": "275647544321-sh1qdk9ggkb68nni06oqb2dg4g48l199.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDciihy73MaJ2btsvugyuj2dxIJOjWvLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275647544321-sh1qdk9ggkb68nni06oqb2dg4g48l199.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
