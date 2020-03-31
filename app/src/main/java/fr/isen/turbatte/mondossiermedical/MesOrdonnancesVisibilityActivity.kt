@@ -3,11 +3,10 @@ package fr.isen.turbatte.mondossiermedical
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class ExamenActivity : AppCompatActivity() {
+class MesOrdonnancesVisibilityActivity : AppCompatActivity() {
 
-    private lateinit var adapter: ExamenAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_examen)
+        setContentView(R.layout.activity_mes_ordonnances_visibility)
     }
 }

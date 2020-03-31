@@ -4,44 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrdonnanceActivity">
-
-    <Button
-        android:id="@+id/newOrdonnanceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/newOrdonnance"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+    tools:context=".MesExamsActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView12"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@color/colorPink"
+        android:background="@color/colorGreen"
         android:gravity="center"
-        android:text="@string/ordonnanceTitle"
+        android:text="@string/mesExams"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ordonanceRecycler"
-        android:layout_width="409dp"
-        android:layout_height="601dp"
+        android:id="@+id/mesExamsRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newOrdonnanceButton" />
+        app:layout_constraintTop_toBottomOf="@+id/newExamenButton" />
+
+    <Button
+        android:id="@+id/newExamenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/newExam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

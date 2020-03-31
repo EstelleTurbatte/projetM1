@@ -10,11 +10,16 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-    doctorButton.setOnClickListener{
-        val intent = Intent(this, LoginDoctorActivity::class.java)
-        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-    }
+
+        doctorButton.setOnClickListener{
+            val intent = Intent(this, LoginDoctorActivity::class.java)
+            startActivity(intent)
+        }
+
+        patientButton.setOnClickListener {
+            val intent = Intent(this, LoginPatientActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }

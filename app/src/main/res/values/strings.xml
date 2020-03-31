@@ -58,6 +58,14 @@
     <string name="newCR">NOUVEAU COMPTE RENDU</string>
     <string name="COMPTERENDU">COMPTE RENDU</string>
     <string name="infoDoc">INFOS MEDECIN</string>
+    <string name="ordonnance">ORDONNANCE</string>
+    <string name="MONESPACEPERSONNEL">MON ESPACE PERSONNEL</string>
+    <string name="mesOrdonnances">MES ORDONNANCES</string>
+    <string name="mesExams">MES EXAMENS</string>
+    <string name="MESCOMPTESRENDUS">MES COMPTES RENDUS</string>
+    <string name="type">type</string>
+    <string name="newExam">AJOUTER EXAMEN</string>
+    <string name="Ble">RECHERCHE APPARAREIL BLUETOOTH</string>
 
 
 </resources>

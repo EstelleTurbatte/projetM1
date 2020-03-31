@@ -4,80 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewOrdonnanceActivity">
-
-    <Button
-        android:id="@+id/envoyerButton"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:background="@color/colorPink"
-        android:text="@string/ENVOYER"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    tools:context=".CRVisibilityActivity">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView10"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/colorPink"
         android:gravity="center"
-        android:text="@string/newOrdonnanceTitle"
+        android:text="@string/COMPTERENDU"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/dateTextView"
+        android:id="@+id/dateTextView4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/DATE"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <EditText
-        android:id="@+id/motifTextView"
-        android:layout_width="0dp"
-        android:layout_height="90dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/motif"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoDocTextView" />
-
-    <EditText
-        android:id="@+id/prescriptionTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/PRESCRIPTION"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/envoyerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/motifTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/infoDocTextView"
+        android:id="@+id/infoDocTextView3"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:hint="@string/infoDoc"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/dateTextView4" />
 
+    <TextView
+        android:id="@+id/motifOrdo2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infoDocTextView3" />
+
+    <TextView
+        android:id="@+id/crTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/empty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motifOrdo2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

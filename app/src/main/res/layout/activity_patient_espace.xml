@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgrounddoctor3"
-    tools:context=".ConsultationActivity">
+    android:background="@drawable/backgroundpatient"
+    tools:context=".PatientEspaceActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="@string/consultationTitre"
+        android:text="@string/MONESPACEPERSONNEL"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
@@ -23,12 +23,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/monEspacePersonneltextView"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@color/colorPink"
+        android:background="@color/colorGreen"
         android:gravity="center"
-        android:text="@string/consultationTitre"
+        android:text="@string/MONESPACEPERSONNEL"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
@@ -37,58 +37,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/monPatient"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
     <Button
-        android:id="@+id/ordonnaceButton"
+        android:id="@+id/ordonnaceButton2"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="140dp"
         android:text="@string/ordonnanceButton"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/CRButton"
+        android:id="@+id/CRButton2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/CRButton"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/examenButton"
-        app:layout_constraintEnd_toEndOf="@+id/ordonnaceButton"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/ordonnaceButton"
-        app:layout_constraintTop_toBottomOf="@+id/ordonnaceButton" />
+        app:layout_constraintBottom_toTopOf="@+id/examenButton2"
+        app:layout_constraintEnd_toEndOf="@+id/ordonnaceButton2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ordonnaceButton2"
+        app:layout_constraintTop_toBottomOf="@+id/ordonnaceButton2" />
 
     <Button
-        android:id="@+id/examenButton"
+        android:id="@+id/examenButton2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="140dp"
         android:text="@string/examensButton"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/doctorCountButton"
-        app:layout_constraintEnd_toEndOf="@+id/CRButton"
-        app:layout_constraintStart_toStartOf="@+id/CRButton" />
+        app:layout_constraintBottom_toTopOf="@+id/patientCountButton"
+        app:layout_constraintEnd_toEndOf="@+id/CRButton2"
+        app:layout_constraintStart_toStartOf="@+id/CRButton2" />
 
     <Button
-        android:id="@+id/doctorCountButton"
+        android:id="@+id/patientCountButton"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@color/colorPink"
+        android:background="@color/colorGreen"
         android:text="@string/monCompteButton"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
@@ -96,4 +84,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/BluetoothButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@+id/patientCountButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/examenButton2"
+        app:srcCompat="@android:drawable/stat_sys_data_bluetooth" />
 </androidx.constraintlayout.widget.ConstraintLayout>
