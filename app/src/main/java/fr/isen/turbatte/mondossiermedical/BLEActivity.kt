@@ -126,18 +126,34 @@ class BLEActivity : AppCompatActivity() {
                     Toast.makeText(this@BLEActivity, "Appareil Connecté 2", Toast.LENGTH_LONG).show()
 
                     gatt?.discoverServices()
+                }else {
+                    Log.i(TAG, "Disonnected to GATT server.")
+                    Toast.makeText(this@BLEActivity, "Appareil Non Connecté ", Toast.LENGTH_LONG).show()
+
                 }
             }
-
             override fun onServicesDiscovered(gatt: BluetoothGatt?, status: Int) {
                 super.onServicesDiscovered(gatt, status)
                 runOnUiThread {
+                    Log.i(TAG, "Service Discovered")
+                    /*bleDeviceRecyclerView.adapter = BLEServiceAdapter(
+                        gatt?.services?.map {
+                            BLEService(
+                                it.uuid.toString(),
+                                it.characteristics
+                            )
+                        }?.toMutableList() ?: arrayListOf(), this@BLEDeviceActivity, gatt
 
+                    )*/
+                    //bleDeviceRecyclerView.layoutManager = LinearLayoutManager(this@BLEDeviceActivity)
                 }
 
             }
         })
         bluetoothGatt?.connect()
+    }
+    private fun connectToCharacteristic(){
+
     }
 
 

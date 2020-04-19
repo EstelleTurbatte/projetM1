@@ -66,6 +66,16 @@
     <string name="type">type</string>
     <string name="newExam">AJOUTER EXAMEN</string>
     <string name="Ble">RECHERCHE APPARAREIL BLUETOOTH</string>
+    <string name="loadingTextView">LOADING</string>
+    <string name="NOM">"NOM : "</string>
+    <string name="PRENOM">PRENOM :</string>
+    <string name="DATENAISSANCE">DATE DE NAISSANCE :</string>
+    <string name="AGE">"AGE : "</string>
+    <string name="NUMEROSECU">"NUMERO DE SECURITE SOCIALE : "</string>
+    <string name="EMAIL">"E-MAIL : "</string>
+    <string name="TELEPHONE">TELEPHONE :</string>
+    <string name="ADRESSE">"ADRESSE : "</string>
+    <string name="MEDECINT">MEDECIN TRAITANT</string>
 
 
 </resources>

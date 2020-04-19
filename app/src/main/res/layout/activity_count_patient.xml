@@ -6,4 +6,130 @@
     android:layout_height="match_parent"
     tools:context=".CountPatientActivity">
 
+    <Button
+        android:id="@+id/modifierPatientButton"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@color/colorGreen"
+        android:text="@string/modifierButton"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@color/colorGreen"
+        android:gravity="center"
+        android:text="@string/monCompte"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nomPatientTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/NOM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/prenomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/PRENOM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nomPatientTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nomPatientTextView" />
+
+    <TextView
+        android:id="@+id/dateNaissanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/DATENAISSANCE"
+        app:layout_constraintEnd_toStartOf="@+id/ageTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/prenomTextView"
+        app:layout_constraintTop_toBottomOf="@+id/prenomTextView" />
+
+    <TextView
+        android:id="@+id/ageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="@string/AGE"
+        app:layout_constraintBottom_toBottomOf="@+id/dateNaissanceTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prenomTextView" />
+
+    <TextView
+        android:id="@+id/numeroSecuTtextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/NUMEROSECU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dateNaissanceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/dateNaissanceTextView" />
+
+    <TextView
+        android:id="@+id/eMailTtextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/EMAIL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/numeroSecuTtextView"
+        app:layout_constraintTop_toBottomOf="@+id/numeroSecuTtextView" />
+
+    <TextView
+        android:id="@+id/telephoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/TELEPHONE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eMailTtextView"
+        app:layout_constraintTop_toBottomOf="@+id/eMailTtextView" />
+
+    <TextView
+        android:id="@+id/adresseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/ADRESSE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/telephoneTextView"
+        app:layout_constraintTop_toBottomOf="@+id/telephoneTextView" />
+
+    <TextView
+        android:id="@+id/medecinTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/MEDECINT"
+        app:layout_constraintEnd_toEndOf="@+id/adresseTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/adresseTextView"
+        app:layout_constraintTop_toBottomOf="@+id/adresseTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

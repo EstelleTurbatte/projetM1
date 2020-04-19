@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BLEActivity"></activity>
+        <activity android:name=".ModifierCountPatientActivity"></activity>
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".BLEActivity" />
         <activity android:name=".MesOrdonnancesVisibilityActivity" />
         <activity android:name=".MesExamsVisibilityActivity" />
         <activity android:name=".MesCrVisibilityActivity" />
