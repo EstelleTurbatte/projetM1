@@ -76,6 +76,10 @@
     <string name="TELEPHONE">TELEPHONE :</string>
     <string name="ADRESSE">"ADRESSE : "</string>
     <string name="MEDECINT">MEDECIN TRAITANT</string>
+    <string name="MESSAGE">MESSAGE</string>
+    <string name="servicedesc">servicedesc</string>
+    <string name="aiddescription">aiddescription</string>
+
 
 
 </resources>

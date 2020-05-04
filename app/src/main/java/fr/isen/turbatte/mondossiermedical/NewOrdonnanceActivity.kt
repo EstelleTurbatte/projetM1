@@ -17,14 +17,13 @@ class NewOrdonnanceActivity : AppCompatActivity() {
     val KEY_INFO_MEDECIN = "INFO MEDECIN"
     val KEY_MOTIF = "MOTIF"
     val KEY_PRESCRIPTION = "PRESCRIPTION"
+    var messageAEnvoyer:String = ""
+    val commande = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_ordonnance)
 
-        val gatt: BluetoothGatt?
-
-        //val characteristic: BluetoothGattCharacteristic = BLEService().items
 
         val date = dateTextView.text.toString()
         val medecin = infoDocTextView.text.toString()
@@ -40,12 +39,12 @@ class NewOrdonnanceActivity : AppCompatActivity() {
 
         val json = JSONObj.toString()
 
-        // characteristic.value = json.toString().toByteArray()
-
+        messageAEnvoyer ="$commande,$medecin,$motif,$prescription"
 
         envoyerButton.setOnClickListener {
-          /*  val intent = Intent(this, LoadingActivity::class.java)
-            startActivity(intent)*/
+          val intent = Intent(this, NFCActivity::class.java)
+            intent.putExtra("MESSAGE",messageAEnvoyer)
+            startActivity(intent)
 
         }
     }

@@ -8,6 +8,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc.hce"
+        android:required="true" />
+    <uses-sdk android:minSdkVersion="10"/>
 
     <application
         android:allowBackup="true"
@@ -16,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModifierCountPatientActivity"></activity>
+        <activity android:name=".NFCActivity"></activity>
+        <activity android:name=".ModifierCountPatientActivity" />
         <activity android:name=".LoadingActivity" />
         <activity android:name=".BLEActivity" />
         <activity android:name=".MesOrdonnancesVisibilityActivity" />
@@ -46,6 +51,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".HostCardEmulatorService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.cardemulation.host_apdu_service"
+                android:resource="@xml/apduservice" />
+
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/technologies" />
+        </service>
+
     </application>
 
 </manifest>

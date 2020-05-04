@@ -8,7 +8,7 @@
     tools:context=".ConsultationActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewNFC"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/colorPrimary"
@@ -46,9 +46,9 @@
         android:textAllCaps="true"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewNFC"
+        app:layout_constraintStart_toStartOf="@+id/textViewNFC"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNFC" />
 
     <Button
         android:id="@+id/ordonnaceButton"
