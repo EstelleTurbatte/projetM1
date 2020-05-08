@@ -86,7 +86,9 @@ class ModifierCountPatientActivity : AppCompatActivity() {
                 precedentMedecin = userMedecinTraitant
             }
             messageAEnvoyer =
-                "{$COMMANDE;$precedentNom;$precedentPrenom;$precedentNumSecu;$precedentMail;$precedentAdress;$precedentTel;$precedentMedecin;age}"
+                "{\"Commande\":$COMMANDE,\"Nom\":$precedentNom,\"Prenom\":$precedentPrenom,\"NumeSecu:$precedentNumSecu,\"Mail:$precedentMail,\"Adresse:$precedentAdress,\"Tel:$precedentTel,\"Medecin:$precedentMedecin;age}"
+
+            //"{\"Commande\":3,\"Id\":0}"
 
             Log.i(TAG, messageAEnvoyer)
             val intent = Intent(this, LoadingActivity::class.java)
@@ -94,7 +96,6 @@ class ModifierCountPatientActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
-
     }
 
 }

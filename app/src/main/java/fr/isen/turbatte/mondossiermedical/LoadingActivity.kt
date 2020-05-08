@@ -88,7 +88,7 @@ class LoadingActivity : AppCompatActivity() {
                 /*
                 adapter.addDeviceToList(result)
                 adapter.notifyDataSetChanged()*/
-                if (result.device.name == "Est")
+                if (result.device.name == "Est" || result.device.name == "Steph" )
                 {
                     connectToDevice(result.device)
                     loadingTextView.text = connexion

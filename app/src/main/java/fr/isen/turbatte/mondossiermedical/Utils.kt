@@ -19,6 +19,7 @@ class Utils {
         }
 
         private val HEX_CHARS_ARRAY = "0123456789ABCDEF".toCharArray()
+
         fun toHex(byteArray: ByteArray) : String {
             val result = StringBuffer()
 
@@ -30,6 +31,16 @@ class Utils {
                 result.append(HEX_CHARS_ARRAY[secondIndex])
             }
 
+            return result.toString()
+        }
+
+        fun byteArrayToHexString(array: ByteArray): String {
+            val result = StringBuilder(array.size * 2)
+            for ( byte in array ) {
+                val toAppend = String.format("%X", byte)
+                result.append(toAppend).append("-")
+            }
+            result.setLength(result.length - 1)
             return result.toString()
         }
     }
