@@ -19,9 +19,21 @@ class LoadingActivity : AppCompatActivity() {
 
     private var mScanning: Boolean = false
     private var bluetoothGatt: BluetoothGatt? = null
-    private var TAG: String = "MyActivity"
+    private var TAG: String = "BLE_ACTIVITY"
     private var messageAEnvoyer:String = ""
     private val intent2 = Intent(this, CountPatientActivity::class.java)
+    private var json = ""
+
+    private var trame1 = ""
+    private var trame2 = ""
+    private var trame3 = ""
+    private var trame4 = ""
+    private var trame5 = ""
+    private var trame6 = ""
+    private var trame7 = ""
+    private var trame8 = ""
+    private var trame9 = ""
+    private var trame10 = ""
 
     private lateinit var handler: Handler
     private val bluetoothAdapter: BluetoothAdapter? by lazy(LazyThreadSafetyMode.NONE) {
@@ -34,6 +46,13 @@ class LoadingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
+
+        json = intent.getStringExtra("JSON_BLE")
+        val size_json = json.length
+        Log.i(TAG, size_json.toString())
+        
+        trame1 = "1020 " + size_json +json[12]
+
 
         messageAEnvoyer = intent.getStringExtra("MESSAGE")
 
@@ -88,7 +107,7 @@ class LoadingActivity : AppCompatActivity() {
                 /*
                 adapter.addDeviceToList(result)
                 adapter.notifyDataSetChanged()*/
-                if (result.device.name == "Est" || result.device.name == "Steph" )
+                if (result.device.name == "Est" || result.device.name == "Steph")
                 {
                     connectToDevice(result.device)
                     loadingTextView.text = connexion
@@ -149,7 +168,7 @@ class LoadingActivity : AppCompatActivity() {
                 val serviceList = gatt?.services
                 val characteristic:BluetoothGattCharacteristic? = gatt?.getService(UUIDService)?.getCharacteristic(
                     UUIDCharac)
-                val text:String = messageAEnvoyer
+                val text:String = json
                 runOnUiThread {
                     Log.i(
                         TAG,

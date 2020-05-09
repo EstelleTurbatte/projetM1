@@ -11,6 +11,7 @@ import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_modifier_count_patient.*
+import org.json.JSONObject
 import java.util.*
 
 class ModifierCountPatientActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class ModifierCountPatientActivity : AppCompatActivity() {
     private var TAG: String = "MyActivity"
 
 
-    private val COMMANDE = 15
+    private val COMMANDE = 10
 
     private var messageAEnvoyer = ""
 
@@ -61,11 +62,11 @@ class ModifierCountPatientActivity : AppCompatActivity() {
             val userAdress:String = userAdressText.text.toString()
             val userMedecinTraitant:String = userMedecinText.text.toString()
 
-            Log.i(TAG, "1:$precedentNom")
+            //Log.i(TAG, "1:$precedentNom")
 
             if (userNom != precedentNom && userNom != ""){
                 precedentNom = userNom
-                Log.i(TAG, "2:$precedentNom")
+               // Log.i(TAG, "2:$precedentNom")
             }
             if (userPrenom != precedentPrenom && userPrenom != ""){
                 precedentPrenom = userPrenom
@@ -85,14 +86,30 @@ class ModifierCountPatientActivity : AppCompatActivity() {
             if(userMedecinTraitant != precedentMedecin && userMedecinTraitant != ""){
                 precedentMedecin = userMedecinTraitant
             }
+
+            val JSONObj = JSONObject()
+
+            JSONObj.put("Commande", COMMANDE)
+            JSONObj.put("Nom", precedentNom)
+            JSONObj.put("Prenom", precedentPrenom)
+            JSONObj.put("NumeroSecu", precedentNumSecu)
+            JSONObj.put("Email", precedentMail)
+            JSONObj.put("Adresse", precedentAdress)
+            JSONObj.put("Telephone", precedentTel)
+            JSONObj.put("MedecinTraitant", precedentMedecin)
+            JSONObj.put("Age", "89")
+
+            val json = JSONObj.toString()
+
             messageAEnvoyer =
                 "{\"Commande\":$COMMANDE,\"Nom\":$precedentNom,\"Prenom\":$precedentPrenom,\"NumeSecu:$precedentNumSecu,\"Mail:$precedentMail,\"Adresse:$precedentAdress,\"Tel:$precedentTel,\"Medecin:$precedentMedecin;age}"
 
             //"{\"Commande\":3,\"Id\":0}"
 
-            Log.i(TAG, messageAEnvoyer)
+            //Log.i(TAG, messageAEnvoyer)
             val intent = Intent(this, LoadingActivity::class.java)
             intent.putExtra("MESSAGE", messageAEnvoyer)
+            intent.putExtra("JSON_BLE", json)
 
             startActivity(intent)
         }

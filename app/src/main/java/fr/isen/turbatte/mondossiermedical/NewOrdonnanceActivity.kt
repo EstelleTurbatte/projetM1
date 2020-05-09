@@ -16,10 +16,10 @@ import java.time.LocalDateTime
 
 class NewOrdonnanceActivity : AppCompatActivity() {
 
-    val KEY_DATE = "DATE"
-    val KEY_INFO_MEDECIN = "INFO MEDECIN"
-    val KEY_MOTIF = "MOTIF"
-    val KEY_PRESCRIPTION = "PRESCRIPTION"
+    val KEY_DATE = "Date"
+    val KEY_INFO_MEDECIN = "Medecin"
+    val KEY_MOTIF = "Motif"
+    val KEY_PRESCRIPTION = "Medicament"
     val commande = 7
     val COMMANDE = "Commande"
 
