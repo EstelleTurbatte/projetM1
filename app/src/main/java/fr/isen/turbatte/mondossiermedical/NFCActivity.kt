@@ -6,8 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.nfc.*
-import android.nfc.NdefRecord.TNF_MIME_MEDIA
-import android.nfc.NdefRecord.createMime
+import android.nfc.NdefRecord.*
 import android.nfc.tech.IsoDep
 import android.nfc.tech.Ndef
 import android.nfc.tech.NdefFormatable
@@ -20,6 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.getTag
 import kotlinx.android.synthetic.main.activity_n_f_c.*
+import org.json.JSONObject
 import java.io.IOException
 import java.nio.charset.Charset
 import java.util.*
@@ -32,11 +32,27 @@ class NFCActivity : AppCompatActivity() {
     private val KEY_LOG_TEXT = "logText"
     private val commande:Int = 3
     private val ID:Int = 0
-    private val messageAEnvoyer = "{\"Commande\":3,\"Id\":0}";
+    private var json = ""
+    private var json2 = ""
+    private var messageFinal = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_n_f_c)
+
+        json2 = intent.getStringExtra("JSON")
+
+        val messageWrittenSuccessfully = createNFCMessage(json2, intent)
+        textViewResult.text = ifElse(messageWrittenSuccessfully,"Successful Written to Tag","Something went wrong Try Again")
+
+        val JSONObj = JSONObject()
+
+        JSONObj.put("Commande", commande)
+        JSONObj.put("Id", ID)
+
+        json = JSONObj.toString()
+        messageFinal = messageFinal + json
+        Log.i("JSON 1 : ", messageFinal)
 
         if (savedInstanceState != null) {
             tv_messages.text = savedInstanceState.getCharSequence(KEY_LOG_TEXT)
@@ -73,12 +89,13 @@ class NFCActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        logMessage("Found intent in onNewIntent", intent?.action.toString())
+        //logMessage("Found intent in onNewIntent", intent?.action.toString())
         // If we got an intent while the app is running, also check if it's a new NDEF message
         // that was discovered
         if (intent != null) processIntent(intent)
-        val messageWrittenSuccessfully = createNFCMessage(messageAEnvoyer, intent)
-        textViewResult.text = ifElse(messageWrittenSuccessfully,"Successful Written to Tag","Something went wrong Try Again")
+        /*val messageWrittenSuccessfully = createNFCMessage(json, intent)
+        Log.i("JSON : ", messageFinal)
+        textViewResult.text = ifElse(messageWrittenSuccessfully,"Successful Written to Tag","Something went wrong Try Again")*/
     }
 
     fun<T> ifElse(condition: Boolean, primaryResult: T, secondaryResult: T) = if (condition) primaryResult else secondaryResult
@@ -90,11 +107,11 @@ private fun processIntent(checkIntent: Intent) {
         // Check if intent has the action of a discovered NFC tag
         // with NDEF formatted contents
         if (checkIntent.action == NfcAdapter.ACTION_NDEF_DISCOVERED) {
-            logMessage("New NDEF intent", checkIntent.toString())
+            //logMessage("New NDEF intent", checkIntent.toString())
 
             // Retrieve the raw NDEF message from the tag
             val rawMessages = checkIntent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
-            logMessage("Raw messages", rawMessages.size.toString())
+            //logMessage("Raw messages", rawMessages.size.toString())
 
             // Complete variant: parse NDEF messages
             if (rawMessages != null) {
@@ -114,21 +131,6 @@ private fun processIntent(checkIntent: Intent) {
                     logMessage("Payload String", String(records[0].payload))
                 }
             }
-
-            // Simple variant: assume we have 1x URI record
-            //if (rawMessages != null && rawMessages.isNotEmpty()) {
-            //    val ndefMsg = rawMessages[0] as NdefMessage
-            //    if (ndefMsg.records != null && ndefMsg.records.isNotEmpty()) {
-            //        val ndefRecord = ndefMsg.records[0]
-            //        if (ndefRecord.toUri() != null) {
-            //            logMessage("URI detected", ndefRecord.toUri().toString())
-            //        } else {
-            //            // Other NFC Tags
-            //            logMessage("Payload", ndefRecord.payload.contentToString())
-            //        }
-            //    }
-            //}
-
         }
     }
 
@@ -177,8 +179,10 @@ private fun processIntent(checkIntent: Intent) {
 
     fun createNFCMessage(payload: String, intent: Intent?) : Boolean {
 
+        val msg = payload
+
         val pathPrefix = "estelleturbatte.com:mondossiermedical"
-        val nfcRecord = NdefRecord(NdefRecord.TNF_EXTERNAL_TYPE, pathPrefix.toByteArray(), ByteArray(0), payload.toByteArray())
+        val nfcRecord = createTextRecord("fr", msg)
         val nfcMessage = NdefMessage(arrayOf(nfcRecord))
         intent?.let {
             val tag = it.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
@@ -248,8 +252,4 @@ private fun processIntent(checkIntent: Intent) {
     }
 }
 
-    /*override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putCharSequence(KEY_LOG_TEXT, tv_messages.text)
-        super.onSaveInstanceState(outState)
-    }*/
 

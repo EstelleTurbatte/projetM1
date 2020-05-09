@@ -33,8 +33,6 @@
                 <action android:name="android.nfc.action.TECH_DISCOVERED"/>
                 <action android:name="android.nfc.action.TAG_DISCOVERED"/>
             </intent-filter>
-            <meta-data android:name="android.nfc.action.TECH_DISCOVERED"
-                android:resource="@xml/technologies" />
         </activity>
         <activity android:name=".ModifierCountPatientActivity" />
         <activity android:name=".LoadingActivity" />
