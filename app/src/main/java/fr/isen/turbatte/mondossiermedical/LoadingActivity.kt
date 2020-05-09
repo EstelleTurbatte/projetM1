@@ -24,16 +24,16 @@ class LoadingActivity : AppCompatActivity() {
     private val intent2 = Intent(this, CountPatientActivity::class.java)
     private var json = ""
 
-    private var trame1 = ""
-    private var trame2 = ""
-    private var trame3 = ""
-    private var trame4 = ""
-    private var trame5 = ""
-    private var trame6 = ""
-    private var trame7 = ""
-    private var trame8 = ""
-    private var trame9 = ""
-    private var trame10 = ""
+    private var trame1 = "1020 "
+    private var trame2 = "1"
+    private var trame3 = "2"
+    private var trame4 = "3"
+    private var trame5 = "4"
+    private var trame6 = "5"
+    private var trame7 = "6"
+    private var trame8 = "7"
+    private var trame9 = "8"
+    private var trame10 = "9"
 
     private lateinit var handler: Handler
     private val bluetoothAdapter: BluetoothAdapter? by lazy(LazyThreadSafetyMode.NONE) {
@@ -50,8 +50,28 @@ class LoadingActivity : AppCompatActivity() {
         json = intent.getStringExtra("JSON_BLE")
         val size_json = json.length
         Log.i(TAG, size_json.toString())
-        
-        trame1 = "1020 " + size_json +json[12]
+
+        /*
+
+String s = "maString";
+int n = 6; // nbre de caractères
+int length = s.length();
+String result = s.substring(length -n, length);
+
+         */
+
+        if(size_json>20){
+            trame1 += size_json
+            trame2 += json.subSequence(0,19)
+            trame2 += json.subSequence(20,38)
+            trame2 += json.subSequence(39,57)
+            trame2 += json.subSequence(58,76)
+            trame2 += json.subSequence(77,95)
+            trame2 += json.subSequence(96,114)
+            trame2 += json.subSequence(115,133)
+            trame2 += json.subSequence(132,152)
+            trame2 += json.subSequence(153,171)
+        }
 
 
         messageAEnvoyer = intent.getStringExtra("MESSAGE")
