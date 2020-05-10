@@ -9,6 +9,8 @@ import kotlinx.android.synthetic.main.activity_cr.*
 class
 CRActivity : AppCompatActivity() {
 
+    private var id:Int = 4
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cr)
@@ -25,6 +27,8 @@ CRActivity : AppCompatActivity() {
     }
     private fun onCRClicked(device: CompteRendus) {
         val intent = Intent(this, CRVisibilityActivity::class.java)
+        id ++
+        intent.putExtra("ID_CR",id)
         startActivity(intent)
     }
 }

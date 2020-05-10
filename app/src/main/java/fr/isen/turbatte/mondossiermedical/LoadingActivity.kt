@@ -60,7 +60,7 @@ String result = s.substring(length -n, length);
 
          */
 
-        if(size_json>20){
+        /*if(size_json>20){
             trame1 += size_json
             trame2 += json.subSequence(0,19)
             trame2 += json.subSequence(20,38)
@@ -71,7 +71,7 @@ String result = s.substring(length -n, length);
             trame2 += json.subSequence(115,133)
             trame2 += json.subSequence(132,152)
             trame2 += json.subSequence(153,171)
-        }
+        }*/
 
 
         messageAEnvoyer = intent.getStringExtra("MESSAGE")
@@ -147,7 +147,9 @@ String result = s.substring(length -n, length);
                     }
                     gatt?.discoverServices()
                 } else {
-                    loadingTextView.text = STATE_DISCONNECTED
+                    runOnUiThread {
+                        loadingTextView.text = STATE_DISCONNECTED
+                    }
                 }
             }
 
@@ -158,7 +160,7 @@ String result = s.substring(length -n, length);
             ) {
                 super.onCharacteristicRead(gatt, characteristic, status)
                 runOnUiThread {
-                    //bleDeviceRecyclerView.adapter?.notifyDataSetChanged()
+                    loadingTextView.text = "caractéristique :${characteristic?.uuid}"
                 }
             }
 
@@ -189,20 +191,23 @@ String result = s.substring(length -n, length);
                 val characteristic:BluetoothGattCharacteristic? = gatt?.getService(UUIDService)?.getCharacteristic(
                     UUIDCharac)
                 val text:String = json
+                val text2:String = "coucou"
                 runOnUiThread {
                     Log.i(
                         TAG,
                         "Services découverts :  $serviceList "
                     )
                     if (characteristic != null) {
+
+                        characteristic?.setValue(text2.toByteArray())
                         gatt?.writeCharacteristic(characteristic)
-                        characteristic?.value = text.toByteArray()
-                        gatt?.readCharacteristic(characteristic)
+
+                        /*gatt?.readCharacteristic(characteristic)
                         val reception = characteristic?.value?.let { String(it) }
                         if (reception != null) {
                             val valeurRecue = "valeur recue : $reception"
                             Log.i(TAG, "VALEUR : $valeurRecue")
-                        }
+                        }*/
                     }
                 }
 
