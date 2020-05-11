@@ -60,18 +60,53 @@ String result = s.substring(length -n, length);
 
          */
 
-        /*if(size_json>20){
+        if(size_json>20){
             trame1 += size_json
             trame2 += json.subSequence(0,19)
-            trame2 += json.subSequence(20,38)
-            trame2 += json.subSequence(39,57)
-            trame2 += json.subSequence(58,76)
-            trame2 += json.subSequence(77,95)
-            trame2 += json.subSequence(96,114)
-            trame2 += json.subSequence(115,133)
-            trame2 += json.subSequence(132,152)
-            trame2 += json.subSequence(153,171)
-        }*/
+            if(size_json>39){
+                trame3 += json.subSequence(20,38)
+                if(size_json>58){
+                    trame4 += json.subSequence(39,57)
+                    if(size_json>77){
+                        trame5 += json.subSequence(58,76)
+                        if(size_json>96){
+                            trame6 += json.subSequence(77,95)
+                            if(size_json>115){
+                                trame7 += json.subSequence(96,114)
+                                if(size_json>134){
+                                    trame8 += json.subSequence(115,133)
+                                    if(size_json>153){
+                                        trame9 += json.subSequence(132,152)
+                                        if(size_json>172){
+                                            trame10 += json.subSequence(153,171)
+                                        }else{
+                                            trame10 += json.subSequence(153,size_json)
+                                        }
+                                    }else{
+                                        trame9 += json.subSequence(132,size_json)
+                                    }
+                                }else{
+                                    trame8 += json.subSequence(115,size_json)
+                                }
+                            }else{
+                                trame7 += json.subSequence(96,size_json)
+                            }
+                        }else{
+                            trame6 += json.subSequence(77,size_json)
+                        }
+                    }else{
+                        trame5 += json.subSequence(58,size_json)
+                    }
+                }else{
+                    trame4 += json.subSequence(39,size_json)
+                }
+            }else{
+                trame3 += json.subSequence(20,size_json)
+            }
+        }else{
+            trame1 += size_json
+            trame2 += json.subSequence(0,size_json)
+        }
 
 
         messageAEnvoyer = intent.getStringExtra("MESSAGE")
@@ -199,7 +234,25 @@ String result = s.substring(length -n, length);
                     )
                     if (characteristic != null) {
 
-                        characteristic?.setValue(text2.toByteArray())
+                        characteristic?.setValue(trame1.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame2.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame3.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame4.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame5.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame6.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame7.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame8.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame9.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        characteristic?.setValue(trame10.toByteArray())
                         gatt?.writeCharacteristic(characteristic)
 
                         /*gatt?.readCharacteristic(characteristic)
