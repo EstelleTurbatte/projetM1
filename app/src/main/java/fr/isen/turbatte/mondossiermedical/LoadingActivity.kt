@@ -1,6 +1,7 @@
 package fr.isen.turbatte.mondossiermedical
 
 import android.bluetooth.*
+import android.bluetooth.BluetoothGatt.GATT_SUCCESS
 import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.content.Context
@@ -12,6 +13,7 @@ import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_bluetooth.*
 import kotlinx.android.synthetic.main.activity_loading.*
+import kotlinx.coroutines.delay
 import java.util.*
 import java.util.UUID.fromString
 
@@ -24,7 +26,7 @@ class LoadingActivity : AppCompatActivity() {
     private val intent2 = Intent(this, CountPatientActivity::class.java)
     private var json = ""
 
-    private var trame1 = "1020 "
+   private var trame1 = "1020 "
     private var trame2 = "1"
     private var trame3 = "2"
     private var trame4 = "3"
@@ -38,6 +40,7 @@ class LoadingActivity : AppCompatActivity() {
     private var autorisation:Boolean = false
 
     private var numAutorisation:Int = 0
+    private var declenchement :Int = 0
 
     private lateinit var handler: Handler
     private val bluetoothAdapter: BluetoothAdapter? by lazy(LazyThreadSafetyMode.NONE) {
@@ -113,7 +116,8 @@ class LoadingActivity : AppCompatActivity() {
             trame1 += size_json
             trame2 += json.subSequence(0,size_json)
         }
-
+        Log.i(TAG, trame1)
+        Log.i(TAG, trame2)
 
         messageAEnvoyer = intent.getStringExtra("MESSAGE")
 
@@ -210,11 +214,23 @@ class LoadingActivity : AppCompatActivity() {
                 status: Int
             ) {
                 super.onCharacteristicWrite(gatt, characteristic, status)
+                /*declenchement++
                 characteristic?.setValue(trame1.toByteArray())
                 gatt?.writeCharacteristic(characteristic)
+                Log.i(TAG, declenchement.toString())
+                if (status == GATT_SUCCESS && declenchement == 1) {
+                    characteristic?.setValue(trame1.toByteArray())
+                    gatt?.writeCharacteristic(characteristic)
+                    Log.i(TAG, " ici : 2")
+                }*/
+                //characteristic?.setValue(trame1.to.ByteArray())
+                //gatt?.writeCharacteristic(characteristic)
+               //characteristic?.setValue(trame2.toByteArray())
+                //gatt?.writeCharacteristic(characteristic)
+//                gatt?.writeCharacteristic(characteristic)*/
+                /*characteristic?.setValue(json.toByteArray())
+                gatt?.writeCharacteristic(characteristic)*/
                 //Log.i(TAG, " ici : 2")
-                characteristic?.setValue(trame2.toByteArray())
-                gatt?.writeCharacteristic(characteristic)
             }
 
             override fun onCharacteristicChanged(
@@ -237,9 +253,26 @@ class LoadingActivity : AppCompatActivity() {
                     UUIDCharac)
                 val text:String = json
                 val text2:String = "coucou"
+                runOnUiThread {
+                   onCharacteristicWrite(gatt,characteristic, status)
+                    //characteristic?.setValue(trame1.toByteArray())
+                    //gatt?.writeCharacteristic(characteristic)
+                    Log.i(TAG, " ici : 1")
+                    characteristic?.setValue(trame1.toByteArray())
+                    gatt?.writeCharacteristic(characteristic)
+                    Log.i(TAG, " del = $declenchement")
+                    if (status == GATT_SUCCESS /*&& declenchement == 1*/) {
+                        characteristic?.setValue(trame2.toByteArray())
+                        gatt?.writeCharacteristic(characteristic)
+                        Log.i(TAG, " ici : 2")
+                    }
+                }
+                /*runOnUiThread {
+                    characteristic?.setValue(trame2.toByteArray())
+                    gatt?.writeCharacteristic(characteristic)
+                }*/
 
-                characteristic?.setValue(text.toByteArray())
-                gatt?.writeCharacteristic(characteristic)
+
 
                 /*when(numAutorisation) {
                     1 -> runOnUiThread {
