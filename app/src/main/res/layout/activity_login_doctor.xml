@@ -22,7 +22,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/loginDocteurInput"
         android:layout_width="236dp"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
         android:hint="@string/nomDocteurLogin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/passwordDoctorInput"
         android:layout_width="238dp"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="@string/passwordDoctorInput"
         app:layout_constraintEnd_toEndOf="@+id/loginDocteurInput"

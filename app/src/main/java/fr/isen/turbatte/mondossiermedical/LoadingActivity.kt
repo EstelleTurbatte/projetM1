@@ -24,9 +24,10 @@ class LoadingActivity : AppCompatActivity() {
     private var TAG: String = "BLE_ACTIVITY"
     private var messageAEnvoyer:String = ""
     private val intent2 = Intent(this, CountPatientActivity::class.java)
+    private var json2 = ""
     private var json = ""
 
-   private var trame1 = "1020 "
+    private var trame1 = "1020 "
     private var trame2 = "1"
     private var trame3 = "2"
     private var trame4 = "3"
@@ -36,6 +37,11 @@ class LoadingActivity : AppCompatActivity() {
     private var trame8 = "7"
     private var trame9 = "8"
     private var trame10 = "9"
+
+    private var message = "1020 "
+
+    //BSO"
+    private var listTrame:MutableList<String> = mutableListOf()
 
     private var autorisation:Boolean = false
 
@@ -54,70 +60,75 @@ class LoadingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
 
-        json = intent.getStringExtra("JSON_BLE")
-        val size_json = json.length
+        json2 = intent.getStringExtra("JSON_BLE")
+
+        val size_json = json2.length
+
+        message += "$size_json           "
+        json = message + json2
+       // message += json
         Log.i(TAG, size_json.toString())
 
+        val size_message: Int = json.length
+        Log.i(TAG, "taille message : $size_message.toString()")
+            //BSO
+        if(size_message>20){
+           listTrame.add(size_message.toString())
+            listTrame.add(json.subSequence(0,19).toString())
 
-
-        if(size_json>20){
-            trame1 += size_json
-            trame2 += json.subSequence(0,19)
             numAutorisation = 1
-            if(size_json>39){
-                trame3 += json.subSequence(20,38)
+            if(size_message>39){
+                listTrame.add(json.subSequence(19,38).toString())
                 numAutorisation = 2
-                if(size_json>58){
-                    trame4 += json.subSequence(39,57)
+                if(size_message>58){
+                    listTrame.add(json.subSequence(38,57).toString())
                     numAutorisation = 3
-                    if(size_json>77){
-                        trame5 += json.subSequence(58,76)
+                    if(size_message>77){
+                        listTrame.add(json.subSequence(57,76).toString())
                         numAutorisation = 4
-                        if(size_json>96){
-                            trame6 += json.subSequence(77,95)
+                        if(size_message>96){
+                            listTrame.add(json.subSequence(76,95).toString())
                             numAutorisation = 5
-                            if(size_json>115){
-                                trame7 += json.subSequence(96,114)
+                            if(size_message>115){
+                                listTrame.add(json.subSequence(95,114).toString())
                                 numAutorisation = 6
-                                if(size_json>134){
-                                    trame8 += json.subSequence(115,133)
+                                if(size_message>134){
+                                    listTrame.add(json.subSequence(114,133).toString())
                                     numAutorisation = 7
-                                    if(size_json>153){
-                                        trame9 += json.subSequence(132,152)
+                                    if(size_message>153){
+                                        listTrame.add(json.subSequence(133,152).toString())
                                         numAutorisation = 8
-                                        if(size_json>172){
-                                            trame10 += json.subSequence(153,171)
+                                        if(size_message>172){
+                                            listTrame.add(json.subSequence(152,171).toString())
                                             numAutorisation = 9
                                         }else{
-                                            trame10 += json.subSequence(153,size_json)
+                                            listTrame.add(json.subSequence(152,size_message).toString())
                                         }
                                     }else{
-                                        trame9 += json.subSequence(132,size_json)
+                                        listTrame.add(json.subSequence(133,size_message).toString())
                                     }
                                 }else{
-                                    trame8 += json.subSequence(115,size_json)
+                                    listTrame.add(json.subSequence(114,size_message).toString())
                                 }
                             }else{
-                                trame7 += json.subSequence(96,size_json)
+                                listTrame.add(json.subSequence(95,size_message).toString())
                             }
                         }else{
-                            trame6 += json.subSequence(77,size_json)
+                            listTrame.add(json.subSequence(76,size_message).toString())
                         }
                     }else{
-                        trame5 += json.subSequence(58,size_json)
+                        listTrame.add(json.subSequence(57,size_message).toString())
                     }
                 }else{
-                    trame4 += json.subSequence(39,size_json)
+                    listTrame.add(json.subSequence(38,size_message).toString())
                 }
             }else{
-                trame3 += json.subSequence(20,size_json)
+                listTrame.add(json.subSequence(19,size_message).toString())
             }
         }else{
-            trame1 += size_json
-            trame2 += json.subSequence(0,size_json)
+            listTrame.add(size_json.toString())
+            listTrame.add(json.subSequence(0,size_message).toString())
         }
-        Log.i(TAG, trame1)
-        Log.i(TAG, trame2)
 
         messageAEnvoyer = intent.getStringExtra("MESSAGE")
 
@@ -214,23 +225,23 @@ class LoadingActivity : AppCompatActivity() {
                 status: Int
             ) {
                 super.onCharacteristicWrite(gatt, characteristic, status)
-                /*declenchement++
-                characteristic?.setValue(trame1.toByteArray())
-                gatt?.writeCharacteristic(characteristic)
-                Log.i(TAG, declenchement.toString())
-                if (status == GATT_SUCCESS && declenchement == 1) {
-                    characteristic?.setValue(trame1.toByteArray())
-                    gatt?.writeCharacteristic(characteristic)
-                    Log.i(TAG, " ici : 2")
-                }*/
-                //characteristic?.setValue(trame1.to.ByteArray())
-                //gatt?.writeCharacteristic(characteristic)
-               //characteristic?.setValue(trame2.toByteArray())
-                //gatt?.writeCharacteristic(characteristic)
-//                gatt?.writeCharacteristic(characteristic)*/
-                /*characteristic?.setValue(json.toByteArray())
-                gatt?.writeCharacteristic(characteristic)*/
-                //Log.i(TAG, " ici : 2")
+
+                if(status == GATT_SUCCESS){
+                    //On check si la liste n'est pas vide
+                    if(listTrame.isNotEmpty()){
+                        //Si la liste n'est pas vide alors on envoie la prochaine trame de la liste
+                        Log.i(TAG, listTrame.get(0))
+                        characteristic?.setValue(listTrame.get(0))
+                        gatt?.writeCharacteristic(characteristic)
+                        //On supprime la trame de la liste pour le reste du traitement
+                        listTrame.removeAt(0)
+
+                    }
+
+                    //Avec ce code, dès que la liste est vide on envoi plus rien
+                    //Par contre c'est à la Nordic de détecter dès que des données sont écrites dans la charactéristique
+                    //Afin de les sauvegarder au fur et à mesure car les anciennes données seront écrasées
+                }
             }
 
             override fun onCharacteristicChanged(
@@ -253,185 +264,14 @@ class LoadingActivity : AppCompatActivity() {
                     UUIDCharac)
                 val text:String = json
                 val text2:String = "coucou"
-                runOnUiThread {
-                   onCharacteristicWrite(gatt,characteristic, status)
-                    //characteristic?.setValue(trame1.toByteArray())
-                    //gatt?.writeCharacteristic(characteristic)
-                    Log.i(TAG, " ici : 1")
-                    characteristic?.setValue(trame1.toByteArray())
-                    gatt?.writeCharacteristic(characteristic)
-                    Log.i(TAG, " del = $declenchement")
-                    if (status == GATT_SUCCESS /*&& declenchement == 1*/) {
-                        characteristic?.setValue(trame2.toByteArray())
-                        gatt?.writeCharacteristic(characteristic)
-                        Log.i(TAG, " ici : 2")
-                    }
-                }
-                /*runOnUiThread {
-                    characteristic?.setValue(trame2.toByteArray())
-                    gatt?.writeCharacteristic(characteristic)
-                }*/
 
-
-
-                /*when(numAutorisation) {
-                    1 -> runOnUiThread {
-                        Log.i(TAG," 1 " )
-                        if (characteristic != null) {
-
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-
-                            /*gatt?.readCharacteristic(characteristic)
-                            val reception = characteristic?.value?.let { String(it) }
-                            if (reception != null) {
-                                val valeurRecue = "valeur recue : $reception"
-                                Log.i(TAG, "VALEUR : $valeurRecue")
-                            }*/
-                        }
-                    }
-                    2 -> runOnUiThread {
-                        Log.i(
-                            TAG,
-                            " 2 "
-                        )
-                        if (characteristic != null) {
-
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            characteristic?.setValue(trame3.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                        }
-                    }
-                    3 -> runOnUiThread {
-                        Log.i(
-                            TAG,
-                            " 3 "
-                        )
-                        if (characteristic != null) {
-
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            characteristic?.setValue(trame3.toByteArray())
-                            characteristic?.setValue(trame4.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                        }
-                    }
-                    4 -> runOnUiThread {
-                        Log.i(
-                            TAG,
-                            " 4 "
-                        )
-                        if (characteristic != null) {
-
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            characteristic?.setValue(trame3.toByteArray())
-                            characteristic?.setValue(trame4.toByteArray())
-                            characteristic?.setValue(trame5.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                        }
-                    }
-                    5 -> runOnUiThread {
-                        Log.i(
-                            TAG,
-                            " 5 "
-                        )
-                        if (characteristic != null) {
-
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            characteristic?.setValue(trame3.toByteArray())
-                            characteristic?.setValue(trame4.toByteArray())
-                            characteristic?.setValue(trame5.toByteArray())
-                            characteristic?.setValue(trame6.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-
-                        }
-                    }
-                    6 -> runOnUiThread {
-                        Log.i(TAG," 6 ")
-                        if (characteristic != null) {
-
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            characteristic?.setValue(trame3.toByteArray())
-                            characteristic?.setValue(trame4.toByteArray())
-                            characteristic?.setValue(trame5.toByteArray())
-                            characteristic?.setValue(trame6.toByteArray())
-                            characteristic?.setValue(trame7.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-
-                        }
-                    }
-                    7 -> runOnUiThread {
-                        Log.i(TAG, " 7 ")
-                        if (characteristic != null) {
-                            //Log.i(TAG, " ici : 1")
-                            characteristic?.setValue(json.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 2")
-                            characteristic?.setValue(trame2.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 3")
-                            characteristic?.setValue(trame3.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 4")
-                            characteristic?.setValue(trame4.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 5")
-                            characteristic?.setValue(trame5.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 6")
-                            characteristic?.setValue(trame6.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 7")
-                            characteristic?.setValue(trame7.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 8")
-                            characteristic?.setValue(trame8.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                            //Log.i(TAG, " ici : 9")
-                        }
-                    }
-                    8 -> runOnUiThread {
-                        Log.i(TAG," 8 ")
-                        if (characteristic != null) {
-                            Log.i(TAG, " ici8 ")
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            characteristic?.setValue(trame3.toByteArray())
-                            characteristic?.setValue(trame4.toByteArray())
-                            characteristic?.setValue(trame5.toByteArray())
-                            characteristic?.setValue(trame6.toByteArray())
-                            characteristic?.setValue(trame7.toByteArray())
-                            characteristic?.setValue(trame8.toByteArray())
-                            characteristic?.setValue(trame9.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-                        }
-                    }
-                    9 -> runOnUiThread {
-                        Log.i( TAG," 9 " )
-                        if (characteristic != null) {
-                            Log.i(TAG, " ici9 ")
-                            characteristic?.setValue(trame1.toByteArray())
-                            characteristic?.setValue(trame2.toByteArray())
-                            characteristic?.setValue(trame3.toByteArray())
-                            characteristic?.setValue(trame4.toByteArray())
-                            characteristic?.setValue(trame5.toByteArray())
-                            characteristic?.setValue(trame6.toByteArray())
-                            characteristic?.setValue(trame7.toByteArray())
-                            characteristic?.setValue(trame8.toByteArray())
-                            characteristic?.setValue(trame9.toByteArray())
-                            characteristic?.setValue(trame10.toByteArray())
-                            gatt?.writeCharacteristic(characteristic)
-
-                        }
-                    }
-
-
-                }*/
+                //BSO
+                Log.i(TAG, " ici : 1")
+                //On envoi une seule trame contenue dans la liste
+                characteristic?.setValue(listTrame.get(0))
+                gatt?.writeCharacteristic(characteristic)
+                //On supprime la trame de la liste pour le reste du traitement
+                listTrame.removeAt(0)
 
             }
         })

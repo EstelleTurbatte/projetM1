@@ -36,7 +36,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nomTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -54,7 +54,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/prenomTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -72,7 +72,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dateNaissanceTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -90,7 +90,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/numeroSecuTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -108,7 +108,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eMailTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -126,7 +126,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/telephoneTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -144,7 +144,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/adressTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -162,7 +162,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/medecinTextInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"

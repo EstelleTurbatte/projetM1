@@ -30,9 +30,6 @@ class LoginPatientActivity : AppCompatActivity() {
         }
 
         validerPatientButton.setOnClickListener {
-            val intent = Intent(this, PatientEspaceActivity::class.java)
-            startActivity(intent)
-
             val userlogin = loginPatient.text.toString()
             val userpassword = passwordPatient.text.toString()
 
@@ -56,7 +53,7 @@ class LoginPatientActivity : AppCompatActivity() {
     }
 
     private fun goToHome() {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, PatientEspaceActivity::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.putExtra("login", loginClair)
         startActivity(intent)
