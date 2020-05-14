@@ -1,11 +1,11 @@
 package fr.isen.turbatte.mondossiermedical
 
 class Results (
-    val motif: String,
-    val date: String,
-    val id: Int,
-    val medicament: String,
-    val medecin: String
+    val Motif: String,
+    val Date: String,
+    val Id: Int,
+    val Medicament: String,
+    val Medecin: String
 )
 
 

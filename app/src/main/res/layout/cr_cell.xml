@@ -4,6 +4,7 @@
     android:id="@+id/crLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/material_on_background_disabled"
     android:orientation="vertical">
 
     <TextView

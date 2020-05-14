@@ -25,8 +25,8 @@ class MesOrdonnanceAdapter(
         private val layout = ordonnanceView.ordonnanceLayout
 
         fun pushInfo(position: Int) {
-            motif.text = ordonnance.results[position].motif
-            date.text = ordonnance.results[position].date
+            motif.text = ordonnance.results[position].Medecin
+            date.text = ordonnance.results[position].Date
 
             layout.setOnClickListener{
                 ordonnanceClickListener.invoke(ordonnance)

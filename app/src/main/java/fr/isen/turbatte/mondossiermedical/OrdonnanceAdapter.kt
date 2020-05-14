@@ -1,5 +1,6 @@
 package fr.isen.turbatte.mondossiermedical
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import kotlinx.android.synthetic.main.ordonnance_cell.view.*
 
 class OrdonnanceAdapter(
     private val ordonnance: Ordonnances,
+    val context: Context,
     private val ordonnanceClickListener: (Ordonnances) -> Unit
 ) :
     RecyclerView.Adapter<OrdonnanceAdapter.OrdonnanceHolder>() {
@@ -25,8 +27,8 @@ class OrdonnanceAdapter(
         private val layout = ordonnanceView.ordonnanceLayout
 
         fun pushInfo(position: Int) {
-            motif.text = ordonnance.results[position].motif
-            date.text = ordonnance.results[position].date
+            motif.text = ordonnance.results[position].Medecin
+            date.text = ordonnance.results[position].Date
 
             layout.setOnClickListener{
                 ordonnanceClickListener.invoke(ordonnance)

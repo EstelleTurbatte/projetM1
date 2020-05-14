@@ -30,7 +30,7 @@ class NFCActivity : AppCompatActivity() {
     private var nfcAdapter: NfcAdapter? = null
     private var nfcPendingIntent: PendingIntent? = null
     private val KEY_LOG_TEXT = "logText"
-    private val commande:Int = 3
+    private val commande:Int = 7
     private val ID:Int = 0
     private var json = ""
     private var json2 = ""
@@ -41,18 +41,11 @@ class NFCActivity : AppCompatActivity() {
         setContentView(R.layout.activity_n_f_c)
 
         json2 = intent.getStringExtra("JSON")
+        Log.i("WRITENDEF", json2)
 
-        val messageWrittenSuccessfully = createNFCMessage(json2, intent)
-        textViewResult.text = ifElse(messageWrittenSuccessfully,"Successful Written to Tag","Something went wrong Try Again")
+        //val messageWrittenSuccessfully = createNFCMessage(json2, intent)
+       // textViewResult.text = ifElse(messageWrittenSuccessfully,"Successful Written to Tag","Something went wrong Try Again")
 
-        val JSONObj = JSONObject()
-
-        JSONObj.put("Commande", commande)
-        JSONObj.put("Id", ID)
-
-        json = JSONObj.toString()
-        messageFinal = messageFinal + json
-        Log.i("JSON 1 : ", messageFinal)
 
         if (savedInstanceState != null) {
             tv_messages.text = savedInstanceState.getCharSequence(KEY_LOG_TEXT)
@@ -93,9 +86,9 @@ class NFCActivity : AppCompatActivity() {
         // If we got an intent while the app is running, also check if it's a new NDEF message
         // that was discovered
         if (intent != null) processIntent(intent)
-        /*val messageWrittenSuccessfully = createNFCMessage(json, intent)
-        Log.i("JSON : ", messageFinal)
-        textViewResult.text = ifElse(messageWrittenSuccessfully,"Successful Written to Tag","Something went wrong Try Again")*/
+        val messageWrittenSuccessfully = createNFCMessage(json2, intent)
+        Log.i("WRITENDEF", json2)
+        textViewResult.text = ifElse(messageWrittenSuccessfully,"Successful Written to Tag","Something went wrong Try Again")
     }
 
     fun<T> ifElse(condition: Boolean, primaryResult: T, secondaryResult: T) = if (condition) primaryResult else secondaryResult
@@ -184,6 +177,7 @@ private fun processIntent(checkIntent: Intent) {
         val pathPrefix = "estelleturbatte.com:mondossiermedical"
         val nfcRecord = createTextRecord("fr", msg)
         val nfcMessage = NdefMessage(arrayOf(nfcRecord))
+        Log.i("WRITENDEF", nfcMessage.toString())
         intent?.let {
             val tag = it.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
             return  writeMessageToTag(nfcMessage, tag)
@@ -192,17 +186,21 @@ private fun processIntent(checkIntent: Intent) {
     }
 
     private fun writeMessageToTag(nfcMessage: NdefMessage, tag: Tag?): Boolean {
-
+    Log.i("WRITENDEF", "1")
         try {
+            Log.i("WRITENDEF", "try")
             val nDefTag = Ndef.get(tag)
-
+            Log.i("WRITENDEF", nDefTag.toString())
             nDefTag?.let {
+                Log.i("WRITENDEF", "let")
                 it.connect()
                 if (it.maxSize < nfcMessage.toByteArray().size) {
                     //Message to large to write to NFC tag
+                    Log.i("WRITENDEF", "2")
                     return false
                 }
                 if (it.isWritable) {
+                    Log.i("WRITENDEF", "3")
                     it.writeNdefMessage(nfcMessage)
                     it.close()
                     //Message is written to tag

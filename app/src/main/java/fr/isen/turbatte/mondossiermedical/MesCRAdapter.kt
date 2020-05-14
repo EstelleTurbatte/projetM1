@@ -24,8 +24,8 @@ class MesCRAdapter(
         private val layout = crView.crLayout
 
         fun pushInfo(position: Int) {
-            motif.text = compteRendus.results[position].motif
-            date.text = compteRendus.results[position].date
+            motif.text = compteRendus.results[position].MedecinPrescripteur
+            date.text = compteRendus.results[position].Date
 
             layout.setOnClickListener {
                 compteRendusClickListener.invoke(compteRendus)
