@@ -222,6 +222,17 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
 
             }
 
+            override fun onDescriptorWrite(
+                gatt: BluetoothGatt?,
+                descriptor: BluetoothGattDescriptor?,
+                status: Int
+            ) {
+                super.onDescriptorWrite(gatt, descriptor, status)
+                if(status == BluetoothGatt.GATT_SUCCESS){
+                    Log.i("TAG", "Descriptor Written ")
+                }
+            }
+
             override fun onCharacteristicChanged(
                 gatt: BluetoothGatt?,
                 characteristic: BluetoothGattCharacteristic?
