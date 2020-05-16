@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import com.google.gson.Gson
 import fr.isen.turbatte.mondossiermedical.Utils.Companion.byteArrayToHexString
 import kotlinx.android.synthetic.main.activity_count_patient.*
 import org.json.JSONObject
@@ -26,6 +27,7 @@ class CountPatientActivity : AppCompatActivity() {
     private var json = ""
     private var notity: Boolean = false
     private var listTrame:MutableList<String> = mutableListOf()
+    private var messageRecu = ""
 
 
     private lateinit var handler: Handler
@@ -40,45 +42,51 @@ class CountPatientActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_count_patient)
 
+        messageRecu = intent.getStringExtra("MESSAGE")
+
         val JSONObj = JSONObject()
 
         JSONObj.put("Commande", 6)
 
+//test.get(KEY_LOGIN).toString()
+        val gson = Gson()
+
+        var MessageObject:JSONObject = gson.fromJson(messageRecu, JSONObject::class.java)
 
         json = JSONObj.toString()
 
         val Nom: String = "NOM : "
-        val userNom: String = "MILANINI"
+        val userNom: String = MessageObject.get("Nom").toString()
         val text1 = Nom + userNom
         nomPatientTextView.text = text1
 
         val Prenom: String = "PRENOM : "
-        val userPrenom: String = "Stéphanie"
+        val userPrenom: String = MessageObject.get("Prenom").toString()
         val text2 = Prenom + userPrenom
         prenomTextView.text = text2
 
         val NumeroSecu: String = "N° : "
-        val userNumeroSecu: String = "2 98 04 83 189 475 35"
+        val userNumeroSecu: String = MessageObject.get("NSecu").toString()
         val text3 = NumeroSecu + userNumeroSecu
         numeroSecuTtextView.text = text3
 
         val Email = "eMail : "
-        val userEmail: String = "steph.milanini@test.fr"
+        val userEmail: String = MessageObject.get("Mail").toString()
         val text4 = Email + userEmail
         eMailTtextView.text = text4
 
         val Tel = "Tel : "
-        val userTel: String = "+33625958796"
+        val userTel: String = MessageObject.get("Tel").toString()
         val text5 = Tel + userTel
         telephoneTextView.text = text5
 
         val adress = "ADRESSE : "
-        val userAdress: String = "720 rue Napoléon 83000 Toulon"
+        val userAdress: String = MessageObject.get("Adresse").toString()
         val text6 = adress + userAdress
         adresseTextView.text = text6
 
         val medecinT = "MEDECIN TRAITANT : "
-        val userMedecin: String = "Docteur Magali MILANINI"
+        val userMedecin: String = MessageObject.get("Medecin").toString()
         val text7 = medecinT + userMedecin
         medecinTextView.text = text7
 

@@ -99,6 +99,7 @@ class ModifierCountPatientActivity : AppCompatActivity() {
             JSONObj.put("Medecin", precedentMedecin)
             JSONObj.put("Age", "89")
 
+
             val json = JSONObj.toString()
 
             messageAEnvoyer =

@@ -28,7 +28,7 @@ class OrdonnanceAdapter(
 
         fun pushInfo(position: Int) {
             motif.text = ordonnance.results[position].Medecin
-            date.text = ordonnance.results[position].Date
+            date.text = ordonnance.results[position].Id.toString()
 
             layout.setOnClickListener{
                 ordonnanceClickListener.invoke(ordonnance)

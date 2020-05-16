@@ -101,6 +101,7 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
                         mScanning = false
                         stopScan(leScanCallBack)
                         MESSAGE_ETAT.text = arretScan
+                        intent.putExtra("MESSAGE", messageAEnvoyer)
                         startActivity(intent)
                     }, SCAN_PERIOD)
                     mScanning = true
