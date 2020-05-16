@@ -19,7 +19,7 @@ class ModifierCountPatientActivity : AppCompatActivity() {
     private var mScanning: Boolean = false
     private var bluetoothGatt: BluetoothGatt? = null
     private var TAG: String = "MyActivity"
-
+    private var messageRecu:String = ""
 
     private val COMMANDE = 10
 

@@ -86,9 +86,7 @@ class OrdonnanceActivity : AppCompatActivity() {
 
 
         /*val gson = GsonBuilder().create()
-
         //listes_ordo = "[{\"Date\":  \"25/03/2019\",\"MedecinPrescripteur\":  \"Toto\",\"id\":  0}, {\"Date\":  \"25/03/2020\",\"MedecinPrescripteur\":  \"Toto\",\"id\":  0}]"
-
         var homedateList = CompteRendus()
         homedateList = gson.fromJson(listes_ordo, CompteRendus::class.java)
         crRecyclerView.adapter = CRAdapter(homedateList,this, ::onCRClicked)

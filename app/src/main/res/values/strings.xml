@@ -79,6 +79,9 @@
     <string name="MESSAGE">MESSAGE</string>
     <string name="servicedesc">servicedesc</string>
     <string name="aiddescription">aiddescription</string>
+    <string name="ECHEC">ECHEC</string>
+    <string name="CHARGEMENT_DES_DONNEES">CHARGEMENT DES DONNEES</string>
+    <string name="EMPTY" />
 
 
 </resources>

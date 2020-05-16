@@ -1,49 +1,84 @@
 package fr.isen.turbatte.mondossiermedical
 
+import android.bluetooth.*
+import android.bluetooth.le.ScanCallback
+import android.bluetooth.le.ScanResult
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.View
+import fr.isen.turbatte.mondossiermedical.Utils.Companion.byteArrayToHexString
 import kotlinx.android.synthetic.main.activity_count_patient.*
+import org.json.JSONObject
+import java.util.*
 
 class CountPatientActivity : AppCompatActivity() {
+
+    private var mScanning: Boolean = false
+    private var bluetoothGatt: BluetoothGatt? = null
+    private var TAG: String = "BLE_ACTIVITY"
+    private var messageAEnvoyer:String = ""
+    private val intent2 = Intent(this, CountPatientActivity::class.java)
+    private var json2 = ""
+    private var json = ""
+    private var notity: Boolean = false
+    private var listTrame:MutableList<String> = mutableListOf()
+
+
+    private lateinit var handler: Handler
+    private val bluetoothAdapter: BluetoothAdapter? by lazy(LazyThreadSafetyMode.NONE) {
+        val bluetoothManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        bluetoothManager.adapter
+    }
+    private val isBLEEnabled: Boolean
+        get() = bluetoothAdapter?.isEnabled == true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_count_patient)
 
+        val JSONObj = JSONObject()
+
+        JSONObj.put("Commande", 6)
+
+
+        json = JSONObj.toString()
+
         val Nom: String = "NOM : "
-        val userNom: String = "eh"
+        val userNom: String = "MILANINI"
         val text1 = Nom + userNom
         nomPatientTextView.text = text1
 
         val Prenom: String = "PRENOM : "
-        val userPrenom: String = "eh"
+        val userPrenom: String = "Stéphanie"
         val text2 = Prenom + userPrenom
         prenomTextView.text = text2
 
         val NumeroSecu: String = "N° : "
-        val userNumeroSecu: String = "eh"
+        val userNumeroSecu: String = "2 98 04 83 189 475 35"
         val text3 = NumeroSecu + userNumeroSecu
         numeroSecuTtextView.text = text3
 
         val Email = "eMail : "
-        val userEmail: String = "eh"
+        val userEmail: String = "steph.milanini@test.fr"
         val text4 = Email + userEmail
         eMailTtextView.text = text4
 
         val Tel = "Tel : "
-        val userTel: String = "eh"
+        val userTel: String = "+33625958796"
         val text5 = Tel + userTel
         telephoneTextView.text = text5
 
         val adress = "ADRESSE : "
-        val userAdress: String = "eh"
+        val userAdress: String = "720 rue Napoléon 83000 Toulon"
         val text6 = adress + userAdress
         adresseTextView.text = text6
 
         val medecinT = "MEDECIN TRAITANT : "
-        val userMedecin: String = "eh"
+        val userMedecin: String = "Docteur Magali MILANINI"
         val text7 = medecinT + userMedecin
         medecinTextView.text = text7
 
@@ -62,7 +97,11 @@ class CountPatientActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
-
+        ButtonReturn.setOnClickListener {
+            val intent = Intent(this, PatientEspaceActivity::class.java)
+            startActivity(intent)
+        }
 
     }
+
 }

@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:text="@string/AGE"
+        android:text="@string/EMPTY"
         app:layout_constraintBottom_toBottomOf="@+id/dateNaissanceTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prenomTextView" />
@@ -132,4 +132,26 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/adresseTextView"
         app:layout_constraintTop_toBottomOf="@+id/adresseTextView" />
+
+    <TextView
+        android:id="@+id/loadingTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/empty"
+        app:layout_constraintBottom_toTopOf="@+id/modifierPatientButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ButtonReturn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/buttonpatient"
+        android:text="@string/EMPTY"
+        app:layout_constraintBottom_toTopOf="@+id/loadingTextView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

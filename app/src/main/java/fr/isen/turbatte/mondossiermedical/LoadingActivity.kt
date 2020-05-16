@@ -101,6 +101,31 @@ class LoadingActivity : AppCompatActivity() {
                                         if(size_message>172){
                                             listTrame.add(json.subSequence(152,171).toString())
                                             numAutorisation = 9
+                                            if(size_message>191){
+                                                listTrame.add(json.subSequence(171,190).toString())
+                                                if(size_message>210){
+                                                    listTrame.add(json.subSequence(190,209).toString())
+                                                    if(size_message>229){
+                                                        listTrame.add(json.subSequence(209,228).toString())
+                                                        if(size_message>248){
+                                                            listTrame.add(json.subSequence(228,247).toString())
+                                                            if(size_message>267){
+                                                                listTrame.add(json.subSequence(247,266).toString())
+                                                            }else{
+                                                                listTrame.add(json.subSequence(247,size_message).toString())
+                                                            }
+                                                        }else{
+                                                            listTrame.add(json.subSequence(228,size_message).toString())
+                                                        }
+                                                    }else{
+                                                        listTrame.add(json.subSequence(209,size_message).toString())
+                                                    }
+                                                }else{
+                                                    listTrame.add(json.subSequence(190,size_message).toString())
+                                                }
+                                            }else{
+                                                listTrame.add(json.subSequence(171,size_message).toString())
+                                            }
                                         }else{
                                             listTrame.add(json.subSequence(152,size_message).toString())
                                         }

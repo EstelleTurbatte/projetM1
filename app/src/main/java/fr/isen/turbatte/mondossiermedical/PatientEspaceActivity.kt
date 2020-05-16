@@ -27,7 +27,7 @@ class PatientEspaceActivity : AppCompatActivity() {
         }
 
         patientCountButton.setOnClickListener {
-            val intent = Intent(this, CountPatientActivity::class.java)
+            val intent = Intent(this, ChargerInfoPatientsActivity::class.java)
             startActivity(intent)
         }
 

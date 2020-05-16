@@ -1,5 +1,8 @@
 package fr.isen.turbatte.mondossiermedical
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-class Ordonnances {
+@Parcelize
+class Ordonnances : Parcelable {
     val results: ArrayList<Results> = ArrayList()
 }
