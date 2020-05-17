@@ -95,8 +95,9 @@ class OrdonnanceActivity : AppCompatActivity() {
 
 
     }
-    private fun onOrdonnanceClicked(device: Ordonnances) {
+    private fun onOrdonnanceClicked(Ordonnance: Results) {
         val intent = Intent(this, OrdonnanceVisibilityActivity::class.java)
+        intent.putExtra("Ordo", Ordonnance)
         startActivity(intent)
     }
 
@@ -207,17 +208,26 @@ class OrdonnanceActivity : AppCompatActivity() {
             listes_ordo = listes_ordo.substring(3,size_lsite-2)
             Log.i("NDEF_MESSAGE 3", listes_ordo)
 
-            var gson = Gson()
+            val gson = Gson()
 
             val toto:String = "{[{\"Date\":	\"2020-05-14T16:29:13.277\",\"Medecin\":\"Docteur Magali Milanini\",\"Id\":	0},{\"Date\":\"2020-05-14T17:13:11.872\",\"Medecin\":\"Docteur Magali Milanini\",\"Id\":3 },{\"Date\":\"2020-05-14T16:59:21.492\",\"Medecin\":	\"Docteur Magali Milanini\",\"Id\":	0 }]}"
             val tableau = object : TypeToken<Array<Results>>() {}.type
-            var ordos:Ordonnances= gson.fromJson(listes_ordo, Ordonnances::class.java)
 
+            val ordos:Ordonnances= gson.fromJson(listes_ordo, Ordonnances::class.java)
             ordos.results.forEachIndexed { idx, tut -> Log.i("NDEF_MESSAGE", "ITEM : $idx :\n $tut")
                 ordonanceRecycler.adapter = OrdonnanceAdapter(ordos,this, ::onOrdonnanceClicked)
                 ordonanceRecycler.layoutManager = LinearLayoutManager(this)
                 ordonanceRecycler.visibility = View.VISIBLE
             }
+
+
+            /*var ordos:Array<Results>= gson.fromJson(listes_ordo, Array<Results>::class.java)
+
+            ordos.results.forEachIndexed { idx, tut -> Log.i("NDEF_MESSAGE", "ITEM : $idx :\n $tut")
+                ordonanceRecycler.adapter = OrdonnanceAdapter(ordos,this, ::onOrdonnanceClicked)
+                ordonanceRecycler.layoutManager = LinearLayoutManager(this)
+                ordonanceRecycler.visibility = View.VISIBLE
+            }*/
 
 
         }

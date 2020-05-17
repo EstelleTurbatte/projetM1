@@ -12,7 +12,7 @@ class PatientEspaceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_patient_espace)
 
         ordonnaceButton2.setOnClickListener {
-            val intent = Intent(this, MesOrdonnancesActivity::class.java)
+            val intent = Intent(this, LoadingOrdoActivity::class.java)
             startActivity(intent)
         }
 

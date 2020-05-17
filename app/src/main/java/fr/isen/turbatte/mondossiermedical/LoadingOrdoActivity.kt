@@ -11,12 +11,11 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import fr.isen.turbatte.mondossiermedical.Utils.Companion.byteArrayToHexString
-import kotlinx.android.synthetic.main.activity_charger_info_patients.*
-import kotlinx.android.synthetic.main.activity_count_patient.*
+import kotlinx.android.synthetic.main.activity_loading_ordo.*
 import org.json.JSONObject
 import java.util.*
 
-class ChargerInfoPatientsActivity : AppCompatActivity() {
+class LoadingOrdoActivity : AppCompatActivity() {
 
     private var mScanning: Boolean = false
     private var bluetoothGatt: BluetoothGatt? = null
@@ -43,11 +42,11 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_charger_info_patients)
+        setContentView(R.layout.activity_loading_ordo)
 
         val JSONObj = JSONObject()
 
-        JSONObj.put("Commande", 6)
+        JSONObj.put("Commande", 0)
 
         Log.i("BLE_CHARGEMENT", "On create")
         json = JSONObj.toString()
@@ -81,7 +80,7 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
                 startActivityForResult(enableIntent, REQUEST_ENABLE_BT)
             }
             else -> {
-                MESSAGE_ETAT.visibility = View.VISIBLE
+                messageText.visibility = View.VISIBLE
             }
         }
     }
@@ -93,29 +92,29 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
 
     private fun scanLeDevice(enable: Boolean) {
         //Log.i("BLE_CHARGEMENT", "scan le device")
-        val intent2 = Intent(this, CountPatientActivity::class.java)
+        val intent2 = Intent(this, MesOrdonnancesActivity::class.java)
         bluetoothAdapter?.bluetoothLeScanner?.apply {
             when {
                 enable -> {
                     handler.postDelayed({
                         mScanning = false
                         stopScan(leScanCallBack)
-                        MESSAGE_ETAT.text = arretScan
+                        messageText.text = arretScan
                         Log.i(TAG, "MESSAGE FINAL "+messageRecu)
-                        intent2.putExtra("MESSAGE_NORDIC", messageRecu)
+                        intent2.putExtra("MESSAGE_BLE", messageRecu)
                         //intent2.putExtra("MESSAGE", messageAEnvoyer)
                         startActivity(intent2)
                     }, SCAN_PERIOD)
                     mScanning = true
                     //Log.i("BLE_CHARGEMENT", "true")
                     startScan(leScanCallBack)
-                    MESSAGE_ETAT.text = scanEnCours
+                    messageText.text = scanEnCours
                 }
                 else -> {
                     mScanning = false
                     stopScan(leScanCallBack)
-                    MESSAGE_ETAT.text = arretScan
-                    intent2.putExtra("MESSAGE_NORDIC", messageRecu)
+                    messageText.text = arretScan
+                    intent2.putExtra("MESSAGE_BLE", messageRecu)
                     startActivity(intent2)
                 }
             }
@@ -135,7 +134,7 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
                 {
                     //Log.i("BLE_CHARGEMENT", "dans le if")
                     connectToDevice(result.device)
-                    MESSAGE_ETAT.text = connexion
+                    messageText.text = connexion
                 }
             }
         }
@@ -149,12 +148,12 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
                     //Log.i("BLE_CHARGEMENT", "connecté")
                     runOnUiThread {
-                        MESSAGE_ETAT.text = STATE_CONNECTED
+                        messageText.text = STATE_CONNECTED
                     }
                     gatt?.discoverServices()
                 } else {
                     runOnUiThread {
-                        MESSAGE_ETAT.text = STATE_DISCONNECTED
+                        messageText.text = STATE_DISCONNECTED
                     }
                 }
             }
@@ -286,7 +285,7 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
         super.onPause()
         if (isBLEEnabled) {
             scanLeDevice(false)
-            MESSAGE_ETAT.text = arretScan
+            messageText.text = arretScan
         }
     }
 
@@ -310,4 +309,5 @@ class ChargerInfoPatientsActivity : AppCompatActivity() {
         private var UUIDCharac: UUID = UUID.fromString("466c9abc-f593-11e8-8eb2-f2801f1b9fd1")
     }
 }
+
 

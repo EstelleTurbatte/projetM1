@@ -6,10 +6,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 
 class Results (
-    val Motif: String,
+    //val Motif: String,
     val Date: String,
     val Id: Int,
-    val Medicament: String,
+    //val Medicament: String,
     val Medecin: String
 ): Parcelable
 

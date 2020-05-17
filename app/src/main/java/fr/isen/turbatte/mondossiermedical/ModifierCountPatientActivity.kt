@@ -87,11 +87,13 @@ class ModifierCountPatientActivity : AppCompatActivity() {
                 precedentMedecin = userMedecinTraitant
             }
 
+            Log.i("TEST_BLE", precedentAdress)
+
             val JSONObj = JSONObject()
 
             JSONObj.put("Commande", COMMANDE)
             JSONObj.put("Nom", precedentNom)
-            JSONObj.put("Prenom", precedentPrenom)
+            JSONObj.put("Prenom ", precedentPrenom)
             JSONObj.put("NSecu", precedentNumSecu)
             JSONObj.put("Email", precedentMail)
             JSONObj.put("Adresse", precedentAdress)

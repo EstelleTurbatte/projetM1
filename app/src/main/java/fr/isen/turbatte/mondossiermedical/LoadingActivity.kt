@@ -27,16 +27,6 @@ class LoadingActivity : AppCompatActivity() {
     private var json2 = ""
     private var json = ""
 
-    private var trame1 = "1020 "
-    private var trame2 = "1"
-    private var trame3 = "2"
-    private var trame4 = "3"
-    private var trame5 = "4"
-    private var trame6 = "5"
-    private var trame7 = "6"
-    private var trame8 = "7"
-    private var trame9 = "8"
-    private var trame10 = "9"
 
     private var message = "1020 "
 
@@ -73,7 +63,7 @@ class LoadingActivity : AppCompatActivity() {
         Log.i(TAG, "taille message : $size_message.toString()")
             //BSO
         if(size_message>20){
-           listTrame.add(size_message.toString())
+          // listTrame.add(size_message.toString())
             listTrame.add(json.subSequence(0,19).toString())
 
             numAutorisation = 1
@@ -151,7 +141,7 @@ class LoadingActivity : AppCompatActivity() {
                 listTrame.add(json.subSequence(19,size_message).toString())
             }
         }else{
-            listTrame.add(size_json.toString())
+            //listTrame.add(size_json.toString())
             listTrame.add(json.subSequence(0,size_message).toString())
         }
 
@@ -176,7 +166,7 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     private fun scanLeDevice(enable: Boolean) {
-        val intent = Intent(this, CountPatientActivity::class.java)
+        val intent = Intent(this, PatientEspaceActivity::class.java)
         bluetoothAdapter?.bluetoothLeScanner?.apply {
             when {
                 enable -> {

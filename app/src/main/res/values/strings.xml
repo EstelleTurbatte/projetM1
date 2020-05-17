@@ -82,6 +82,7 @@
     <string name="ECHEC">ECHEC</string>
     <string name="CHARGEMENT_DES_DONNEES">CHARGEMENT DES DONNEES</string>
     <string name="EMPTY" />
+    <string name="MONORDO">MON ORDONNANCE</string>
 
 
 </resources>

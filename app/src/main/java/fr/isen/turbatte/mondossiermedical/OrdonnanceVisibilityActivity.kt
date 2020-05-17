@@ -10,8 +10,12 @@ class OrdonnanceVisibilityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ordonnance_visibility)
 
-        val ordo: Ordonnances = intent.getParcelableExtra("Ordos")
+        val ordo: Results = intent.getParcelableExtra("Ordo")
 
+        dateTextView3.text = ordo.Date
+        infoDocTextView2.text = ordo.Medecin
+        //motifOrdo.text = ordo.Motif
+       // prescriptionTextView.text = ordo.Medicament
 
     }
 }

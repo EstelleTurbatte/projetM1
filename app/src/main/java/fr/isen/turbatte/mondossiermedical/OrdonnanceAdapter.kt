@@ -11,27 +11,29 @@ import kotlinx.android.synthetic.main.ordonnance_cell.view.*
 class OrdonnanceAdapter(
     private val ordonnance: Ordonnances,
     val context: Context,
-    private val ordonnanceClickListener: (Ordonnances) -> Unit
+    private val ordonnanceClickListener: (Results) -> Unit
 ) :
     RecyclerView.Adapter<OrdonnanceAdapter.OrdonnanceHolder>() {
 
     class OrdonnanceHolder(
         ordonnanceView: View,
         private val ordonnance: Ordonnances,
-        private val ordonnanceClickListener: (Ordonnances) -> Unit
+        private val ordonnanceClickListener: (Results) -> Unit
     ):
         RecyclerView.ViewHolder(ordonnanceView) {
 
         private val motif: TextView = ordonnanceView.motifTextView
         private val date: TextView = ordonnanceView.dateView
+        private val Id: TextView = ordonnanceView.IDtextView
         private val layout = ordonnanceView.ordonnanceLayout
 
         fun pushInfo(position: Int) {
             motif.text = ordonnance.results[position].Medecin
             date.text = ordonnance.results[position].Id.toString()
+            Id.text = ordonnance.results[position].Date.toString()
 
             layout.setOnClickListener{
-                ordonnanceClickListener.invoke(ordonnance)
+                ordonnanceClickListener.invoke(ordonnance.results[position])
             }
         }
     }

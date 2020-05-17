@@ -22,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChargerInfoPatientsActivity"></activity>
+        <activity android:name=".LoadingOrdoActivity"></activity>
+        <activity android:name=".ChargerInfoPatientsActivity" />
         <activity android:name=".NFC_CR_Activity" />
         <activity android:name=".NFCActivity">
             <intent-filter>
